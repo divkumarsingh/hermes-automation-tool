@@ -1,0 +1,17 @@
+{
+  "name": "processor",
+  "module": "index.ts",
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@repo/database": "*",
+    "@repo/kafka": "*"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "private": true,
+  "type": "module"
+}

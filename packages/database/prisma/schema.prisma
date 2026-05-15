@@ -36,8 +36,8 @@ model Trigger {
   zapId       String  @unique
   triggerId   String
   metadata    Json  @default("{}")
-  type  AvailableTrigger @relation(fields: [triggerId], references: [id])
-  zap  Zap                @relation(fields: [zapId], references: [id])
+  type        AvailableTrigger  @relation(fields: [triggerId], references: [id])
+  zap         Zap                @relation(fields: [zapId], references: [id])
 }
 
 model Action {

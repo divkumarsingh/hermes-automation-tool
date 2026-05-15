@@ -6,6 +6,11 @@
   "exports": {
     "./client" : "./index.ts"
   },
+  "scripts": {
+    "db:migrate": "bunx --bun prisma migrate dev",
+    "db:generate": "bunx --bun prisma generate",
+    "db:studio": "bunx --bun prisma studio db"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/node": "^25.7.0"
