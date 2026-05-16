@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { userMiddleware } from "../middleware";
-
+import { userMiddleware } from "../../middleware";
+import { prisma as dbClient} from "@repo/database/client";
 
 
 export const zapRouter = Router();
 
-zapRouter.post("/", userMiddleware async(req, res) => {
+zapRouter.post("/", userMiddleware, async(req, res) => {
     console.log("create end point");
     res.json({
         message: "zap post endpoint hitted"
