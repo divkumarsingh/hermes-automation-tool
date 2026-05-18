@@ -15,20 +15,20 @@ userRouter.post("/signup", async(req, res) => {
     if(!parsedData.success) {
         return res.status(411).json({msg: "Incorrect inputs" })
     }
-    console.log("breakpoint1");
+
     const userExists = await dbClient.user.findFirst({
         where: {
             email: parsedData.data.username,
         }
     })
-    console.log("breakpoint2")
+
 
     if(userExists){
         return res.status(403).json({
             message: "user already exists"
         })
     }
-    console.log("breakpoint3")
+
     const hashedPassword = await bcrypt.hash(parsedData.data.password, 10);
 
     await dbClient.user.create({
@@ -39,9 +39,9 @@ userRouter.post("/signup", async(req, res) => {
         }
     })
 
-    console.log("breakpoint4")
+
     //await sendEmail();
-    console.log("signup handler")
+
     return res.json({
         message: "please verify your account"
     })
@@ -56,7 +56,7 @@ userRouter.post("/signin", async(req, res) => {
         return res.status(411).json({message: "Incorrect Inputs"})
     }
     const email = parsedData.data.username;
-    const user = await dbClient.user.findUnique({
+    const user = await dbClient.user.findFirst({
         where: {email}
     });
     if(!user){
@@ -80,10 +80,11 @@ userRouter.post("/signin", async(req, res) => {
     })
 });
 
-userRouter.get("/:user", userMiddleware, async(req, res) => {
+userRouter.get("/", userMiddleware, async(req, res) => {
     //@ts-ignore
-    const id = req.id;
     
+    const id = req.id;
+
     const user = await dbClient.user.findFirst({
         where: {
             id,
@@ -98,6 +99,6 @@ userRouter.get("/:user", userMiddleware, async(req, res) => {
     
     console.log("user handler");
     res.json({
-        message: "user endpoint hitted"
+        user
     })
 })
