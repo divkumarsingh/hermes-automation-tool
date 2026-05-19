@@ -1,0 +1,15 @@
+{
+  "name": "@repo/shared-utils",
+  "module": "index.ts",
+  "type": "module",
+  "exports": {
+    "./config": "./index.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
