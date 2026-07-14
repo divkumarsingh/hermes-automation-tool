@@ -4,9 +4,14 @@ import { useState } from "react"
 import { AppBar } from "../components/AppBar"
 import { Button } from "../components/Button"
 import { InputBox } from "../components/InputBox"
+import axios from "axios"
+import { BACKEND_URL } from "@repo/shared-utils/config"
+import { routerServerGlobal } from "next/dist/server/lib/router-utils/router-server-context"
+import { useRouter } from "next/navigation"
 
 
 export default function Home() {
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     return(
@@ -35,7 +40,13 @@ export default function Home() {
                                         setPassword(e.target.value)
                                     }}/>                        
                                 </div>
-                                <Button variant="primary" text="Log in " className="rounded" />
+                                <Button variant="primary" text="Log in " className="rounded" onClick={ async() => {
+                                    const res = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
+                                        username: email,
+                                        password: password
+                                    });
+                                    router.push("/dashboard")
+                                }}/>
                             </div>
                         </div>
                     </div>

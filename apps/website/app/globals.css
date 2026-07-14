@@ -10,6 +10,7 @@
   --color-secondary-color: #FFFFFF;
   --color-tertiary-color: #0090B8;
   --color-neutral-color: #8D706D;
+  --color-quaternary-color: #6869ea;
 }
 
 @theme inline {

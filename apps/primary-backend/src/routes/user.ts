@@ -11,7 +11,6 @@ export const userRouter = Router();
 userRouter.post("/signup", async(req, res) => {
     const body = req.body;
     const parsedData = SignupSchema.safeParse(body);
-  
     if(!parsedData.success) {
         return res.status(411).json({msg: "Incorrect inputs" })
     }
@@ -71,9 +70,7 @@ userRouter.post("/signin", async(req, res) => {
     const token = jwt.sign({
         id: user.id
     }, (process.env.JWT_SECRET as string))
-    console.log(token);
     
-    console.log("signin handler");
     res.json({
         message: "signup endpoint hitted",
         token: token
