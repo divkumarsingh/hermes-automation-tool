@@ -12,7 +12,7 @@ interface ButtonProps {
     className?: string
 }
 
-const defaultStyles = "text-center cursor-pointer focus:none hover:opacity-90 overflow:hidden text-md px-3 py-1.5 mr-2 "
+const defaultStyles = "text-center cursor-pointer focus:none hover:opacity-90 overflow:hidden text-md px-4 py-1.5 mr-2 "
 
 const variantsStyles: Record<Variants, string> = {
     "primary": "bg-primary-color",
